@@ -4,10 +4,11 @@ import { addReminder, deleteReminder } from '../action'
 
 class App extends Component {
 
-  state = { text: '' }
+  state = { text: '', dueDate: '' }
 
   addReminder() {
-    this.props.addReminder(this.state.text)
+    console.log('this.state.dueDate', this.state.dueDate);
+    this.props.addReminder(this.state.text, this.state.dueDate)
     // console.log("this.state : ", this.state);
   }
 
@@ -52,6 +53,10 @@ class App extends Component {
               className="form-control"
               placeholder="I have to..."
               onChange={event => this.setState({ text: event.target.value })} />
+            <input
+              className="form-control"
+              type="datetime-local"
+              onChange={event => this.setState({ dueDate: event.target.value })} />
           </div>
           <button
             type="button"
